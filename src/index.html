@@ -1,12 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+	<head>
+		<meta charset="utf-8">
+		<title>404</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+		<style>  
+ 
+</style>
+	</head>
+	<body>
+		<div id="gameArea">
+			<canvas id="gameCanvas" width="1000" height="1000"></canvas>
+			<div id="i" cols="4" rows="1"  style="border: none; border-style: none; border-color: transparent; overflow: auto;font-family:Verdana; font-size:50px;"></div>
+			<audio id="song1"></audio>
+			<audio id="clear"></audio>
+		</div>
+	</body>
+  <script type="text/javascript">
 
-<body>
-</body>
+/* Compute mouse / touch coordinates on the canvas */
+/* Customizable canvas size */
+let canvas_width = 30;
+let canvas_height = 30;
 
+/* Canvas offsets (changed onresize) */
+let canvas_left = 0;
+let canvas_top = 0;
+
+/* Canvas "real" size (changed onresize) */
+let canvas_real_width = 0;
+let canvas_real_height = 0;
+let down_x = 0
+let down_y = 0
+update_mouse = e => {
+
+  let pointer = {};
+  if(e.changedTouches){
+    pointer = e.changedTouches[0];
+  }
+  else {
+    pointer = e;
+  }
+  
+  return [
+    ~~(((pointer.pageX) - canvas_left) * canvas_width / canvas_real_width),
+    ~~(((pointer.pageY) - canvas_top) * canvas_height / canvas_real_height)
+  ];
+}
+/* Mousedown / touchstart */
+ontouchstart = e => {
+  //onmousedown(e)
+};
+  </script>
 </html>
