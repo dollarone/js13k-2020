@@ -7,8 +7,10 @@ class EventCard {
 		this.name=name
 		this.event=event
 	}
-	render() {
+	render(x,y) {
 
+		this.context.fillStyle = 'Red'
+		this.context.fillRect(x,y,200,300);
 	}
 }
 export default EventCard

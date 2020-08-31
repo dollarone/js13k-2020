@@ -62,13 +62,25 @@ class Main {
 		this.colours[6] = "#aaaaaa"
 		this.px=this.createTileDesigns(this.tileDesigns)
 
+
 		let footballer=new Footballer(this.context,"Frank Rosenfelt","Bronze","Defender")
 		this.cards=[]
-		this.cards.push(new PlayerCard(this.context,"Tackle",footballer,"Defence",2,null,0))
-		this.cards.push(new PlayerCard(this.context,"Header",footballer,"Defence",2,null,0))
-		this.cards.push(new PlayerCard(this.context,"Sliding tackle",footballer,"Defence",2,null,0))
-		this.cards.push(new PlayerCard(this.context,"Powerful challenge",footballer,"Defence",2,"Defence",4))
-		this.cards.push(new PlayerCard(this.context,"Last ditch tackle",footballer,"Defence",2,"Defence",4))
+		this.cards.push(new PlayerCard(this.context,"Tackle",footballer,"Defence",2,null,0,20+this.card_spacing*0,400))
+		this.cards.push(new PlayerCard(this.context,"Header",footballer,"Defence",2,null,0,20+this.card_spacing*1,400))
+		this.cards.push(new PlayerCard(this.context,"Sliding tackle",footballer,"Defence",2,null,0,20+this.card_spacing*2,400))
+		this.cards.push(new PlayerCard(this.context,"Powerful challenge",footballer,"Defence",2,"Defence",4,20+this.card_spacing*3,400))
+		this.cards.push(new PlayerCard(this.context,"Last ditch tackle",footballer,"Defence",2,"Defence",4,20+this.card_spacing*4,400))
+		//this.cards.push(new PlayerCard(this.context,"Last ditch tackle",footballer,"Defence",2,"Defence",4,20+this.card_spacing*5,400))
+
+		this.event_card=new EventCard(this.context,"test","yes")
+
+		this.card_start=40
+		this.card_spacing=250
+		if(this.cards.length>5) {
+			this.card_spacing=208
+			this.card_start=20
+		}
+
 		this.context.font = "12px Arial"
 		//this.context.font = "16px Arial"
 		this.context.strokeStyle = this.colours[6]
@@ -298,11 +310,21 @@ class Main {
 		}
 	}
     render() {
+
+    	this.event_card.render(10,70)
+    	this.event_card.render(220,70)
+    	this.event_card.render(210*2+10,70)
+
+    	this.event_card.render(650,70)
+    	this.event_card.render(650+210,70)
+    	this.event_card.render(630+210*2+20,70)
     	
 		for(let i=0; i<this.cards.length; i++) {
 			console.log(this.cards[i].name)
-		    this.context.fillText(this.cards[i].name, 20+i*100, 320)
+		    //this.context.fillText(this.cards[i].name, 20+i*100, 320)
+		    this.cards[i].render(this.card_start+this.card_spacing*i,400)
 		}
+
 
 
 		if(this.debug) {

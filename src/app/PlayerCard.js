@@ -11,8 +11,10 @@ class PlayerCard {
 		this.special_type=special_type
 		this.special_quality=special_quality
 	}
-	render() {
+	render(x,y) {
 
+		this.context.fillStyle = 'Red'
+		this.context.fillRect(x,y,200,300);
 	}
 }
 export default PlayerCard
